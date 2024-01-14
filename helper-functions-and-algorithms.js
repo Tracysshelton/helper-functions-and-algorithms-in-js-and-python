@@ -119,3 +119,84 @@ const tipCal = ( subtotal, taxRate, tipPercentage) => {
 }
 
 //console.log(tipCal(17.90, .085, 15))
+
+// Bubble sort
+const bubbleSort = (arr) => {
+  const n = arr.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // Swap arr[j] and arr[j+1]
+        const temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+
+    return arr;
+}
+
+// console.log(bubbleSort([64, 34, 25, 12, 22, 11, 90]))
+
+// Selection Sort
+const selectionSort = (arr) => {
+  const n = arr.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
+
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        if (minIndex !== i) {
+            // Swap the elements
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+        }
+    }
+
+    return arr;
+}
+
+// console.log(selectionSort([64, 25, 12, 22, 11]))
+
+// Linear Search
+const linearSearch = (arr, target) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      return target + " found at index " + i
+    }
+  }
+  return i + " not found in the array"
+}
+
+console.log(linearSearch ([1, 2, 3, 4, 5], 3))
+
+// The Caesar cipher
+const caesarCipher = (text, shift) => {
+  const isUpperCase = (char) => char >= 'A' && char <= 'Z';
+  const isLowerCase = (char) => char >= 'a' && char <= 'z'; 
+
+  return text.split('').map((char) => {
+    if (isUpperCase(char)) {
+      return String.fromCharCode(((char.charCodeAt(0) - 65 + shift) % 26) + 65);
+    } else if (isLowerCase(char)) {
+      return String.fromCharCode(((char.charCodeAt(0) - 97 + shift) % 26) + 97);
+    } else {
+      return char;
+    }
+  }).join('');
+}
+
+const plaintext = "Hello, World!";
+const shift = 3;
+
+const encryptedText = caesarCipher(plaintext, shift);
+console.log('Encrypted:', encryptedText);
+
+const decryptedText = caesarCipher(encryptedText, -shift);
+console.log('Decrypted:', decryptedText);
