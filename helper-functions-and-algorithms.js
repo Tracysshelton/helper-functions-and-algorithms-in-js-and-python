@@ -106,3 +106,16 @@ const armstrongCheck = (num) => {
 }
 
 // console.log(armstrongCheck(153))
+
+// Tip Calculator returns tip amount
+const tipCal = ( subtotal, taxRate, tipPercentage) => {
+  // Calculate total amount with tax
+  const totalAmount = subtotal * (1 + taxRate);
+
+  // Calculate tip amount
+  const tipAmount = totalAmount * (tipPercentage / 100);
+
+  return tipAmount.toFixed(2);  
+}
+
+//console.log(tipCal(17.90, .085, 15))
