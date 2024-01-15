@@ -85,23 +85,22 @@ const fibonacciSeq = (num) => {
 // console.log(fibonacciSeq(10))
 
 //Check for Armstrong number
-const armstrongCheck = (num) => {
-  let num_str = toString(num);
-  let num_digits = num_str.length;
+function armstrongCheck(num) {
+  // Convert the number to a string to find the number of digits
+  const numStr = num.toString();
+  const numDigits = numStr.length;
 
-  let sum_of_powers = 0;
-  let temp_num = num;
-
-  while(temp_num > 0){
-    digit = temp_num % 10;
-    sum_of_powers += digit ** num_digits
-    temp_num /= 10
+  // Calculate the sum of each digit raised to the power of the number of digits
+  let sum = 0;
+  for (let i = 0; i < numDigits; i++) {
+    sum += Math.pow(parseInt(numStr[i]), numDigits);
   }
 
-  if (sum_of_powers == num ){
-    return num + " is a Armstrong number"
+  // Check if the sum is equal to the original number
+  if (sum === num) {
+    return num + " is am Armstrong number.";
   } else {
-    return num + " is not a Armstrong number"
+    return num + " is not an Armstrong number."
   }
 }
 
